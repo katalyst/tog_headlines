@@ -8,6 +8,9 @@ class Story < ActiveRecord::Base
   belongs_to :publisher, :class_name => "User", :foreign_key => "publisher_id"  
   belongs_to :editor,    :class_name => "User", :foreign_key => "editor_id"  
   belongs_to :owner,     :class_name => "User", :foreign_key => "user_id"  
+  
+  has_many :story_to_group_connections
+  has_many :groups, :through => :story_to_group_connections
 
   named_scope :draft, :conditions => ['state = ?', 'draft']
   

@@ -58,7 +58,6 @@ class Admin::Headlines::StoriesController < Admin::BaseController
                                   :order => @order + " " + @asc
   end
 
-
   def update
     @story.editor = current_user
     if @story.update_attributes(params[:story])

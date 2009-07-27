@@ -6,22 +6,22 @@
       TODO: mensaje de usuario no activo
    
     <% else %>
-      <% form_for(:story, @story, :url => admin_headlines_story_path(@story), :html => {:method => :put}) do |f| -%>
+      <% form_for(:story, @story, :url => member_headlines_story_path(@story), :html => {:method => :put}) do |f| -%>
          <p>
-           <label for="title"><strong>Título de la Noticia</strong></label>
+           <label for="title"><strong>Títle:</strong></label>
              <%= f.text_field :title, {:size => 40, :class => "fieldbox wide"} %>
            </label>
          </p>
 
          <p>
-           <label for="tags"><strong>Tags (separa por comas):</strong><br />
+           <label for="tags"><strong>Tags (separate with commas):</strong><br />
               <%= f.text_field :tag_list,{:size => nil} -%>
            </label>
          </p>
 
          <% unless current_user.groups.empty? %>
          <p>
-           <label for="text"><strong>Compartir con comunidades</strong><br />
+           <label for="text"><strong>Groups:</strong><br />
              <%
                groups_id = @story.groups.map {|g| g.id }
                current_user.groups.each {|group| %>
@@ -38,23 +38,22 @@
             <% } %>
          </p>
          <% end %>
-         <input type="hidden" name="story[groups][]" value="0" />
 
          <p>
-           <label for="text"><strong>Resumen de la noticia:</strong><br />
-              <%= f.text_area :body, {:cols => 40, :rows => 7, :class => "fieldbox wide"} %>
+           <label for="text"><strong>Summary:</strong><br />
+              <%= f.text_area :summary, {:cols => 40, :rows => 7, :class => "fieldbox wide"} %>
            </label>
          </p>
 
          <p>
-           <label for="text"><strong>Contenido de la noticia:</strong><br />
+           <label for="text"><strong>Body:</strong><br />
               <%= f.text_area :body, {:cols => 40, :rows => 7, :class => "fieldbox wide"} %>
            </label>
          </p>
          
           <div class="form_actions center">
             <br />
-            <%= submit_tag 'Guardar', {:class=>"button1", :style => "font-size: 1em;"} %>
+            <%= submit_tag 'Edit', {:class=>"button1", :style => "font-size: 1em;"} %>
           </div>
         <% end -%>
       <% end -%>

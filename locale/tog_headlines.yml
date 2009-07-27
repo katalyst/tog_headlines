@@ -41,6 +41,7 @@ en:
     member:
       story_created: Story has been created successfully      
       error_creating: There was an error creting the story
+      story_updated: Story has been updated successfully
     admin:
       story_created: Story has been created successfully
       story_deleted: Story has been deleted successfully
