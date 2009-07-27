@@ -68,6 +68,17 @@ class Story < ActiveRecord::Base
     I18n.l(self.publish_date, :format => format)
   end
 
+  def visible_to(user)
+    if groups.length == 0 or portal == true
+      return true
+    else
+      if user 
+        return (groups & user.groups).length > 0
+      end
+    end
+    false
+  end
+
   private 
   
     def set_archivation_date

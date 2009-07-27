@@ -16,6 +16,8 @@ class Headlines::StoriesController < ApplicationController
     @stories = Story.published.paginate :per_page => Tog::Config['plugins.tog_headlines.pagination_size'],
                                   :page => @page,
                                   :order => @order + " " + @asc
+                                  
+    @stories = @stories.select{ |s| s.visible_to(current_user) }
     respond_to do |format|
       format.html
       format.atom { render(:layout => false) }

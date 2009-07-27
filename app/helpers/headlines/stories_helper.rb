@@ -5,5 +5,5 @@ module Headlines::StoriesHelper
                                     :order => 'publish_date desc',
                                     :limit => count)
   end
-
+  
 end
