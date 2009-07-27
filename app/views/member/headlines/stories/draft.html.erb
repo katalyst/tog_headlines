@@ -3,7 +3,7 @@
   <div class="title1 maincolor4"><span class="fontbigger">Noticias en borrador</span>
     <% if admin? %>
       <div class="titletab"><div class="titletab_content">
-        <%= link_to 'Nueva Noticia', new_admin_headlines_story_path, :class => "link_add maincolor4" %>
+        <%= link_to 'New Admin Story', new_admin_headlines_story_path, :class => "link_add maincolor4" %>
       </div></div>
     <% end %>
   </div>       
@@ -38,6 +38,6 @@
       </ul>
     <% end %>
     <% else %>
-       No hay noticias en estado borrador.
+       No stories.
     <% end %>
 </div> <!-- #news -->     

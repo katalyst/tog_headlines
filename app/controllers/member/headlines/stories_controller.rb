@@ -1,5 +1,5 @@
 class Member::Headlines::StoriesController < Member::BaseController
-
+  
   def new
     @story = Story.new(:state => 'draft')
   end

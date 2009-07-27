@@ -1,5 +1,5 @@
 <div class="main_wrap">
-  <div class="module_title">Crear Noticia</div>
+  <div class="module_title">Create Story</div>
   <div class="main_content">
     <% unless logged_in? && current_user.active? %>
     
@@ -9,24 +9,14 @@
       <%= error_messages_for :story %>
       <% form_for :story, :url => {:action => :create},  :html => {:id => "settings"} do |f| -%>
         <p>
-          <label for="title"><strong>Título de la Noticia</strong></label>
+          <label for="title"><strong>Title:</strong></label>
            <%= f.text_field :title, {:size => 40, :class => "fieldbox wide"} %>
           </label>  
         </p>
         <p>
-         <label for="tags"><strong>Tags (separa por comas):</strong><br />
+         <label for="tags"><strong>Tags (separate with commas):</strong><br />
             <%= f.text_field :tag_list, {:size => nil} -%>
          </label>
-        </p>
-        <p>
-           <label for="tags"><strong><%= I18n.t("tog_headlines.model.source") %></strong><br />
-             <%=f.text_field :source, :class => "fieldbox" %>
-           </label>      
-        </p>
-        <p>
-           <label for="tags"><strong><%= I18n.t("tog_headlines.model.lang") %></strong><br />
-             <%=f.select :lang, {"Español"=>"es"}, :class => "fieldbox"%>
-           </label>      
         </p>
         <p>
          <label for="tags"><strong><%= I18n.t("tog_headlines.model.publish_date") %></strong><br />
@@ -39,18 +29,18 @@
           </label>                   
         </p>         
         <p>
-         <label for="text"><strong>Resumen de la noticia:</strong><br />
+         <label for="text"><strong>Summary:</strong><br />
             <%= f.text_area :summary, {:cols => 40, :rows => 7, :class => "fieldbox wide"} %>
          </label>
         </p>
         <p>
-          <label for="text"><strong>Contenido de la noticia:</strong><br />
+          <label for="text"><strong>Body:</strong><br />
             <%= f.text_area :body, {:cols => 40, :rows => 7, :class => "fieldbox wide"} %>
           </label>  
         </p>
         <div class="form_actions center">
           <br />
-          <%= submit_tag 'Publicar', {:class=>"button1", :style => "font-size: 1em;"} %>
+          <%= submit_tag 'Publish', {:class=>"button1", :style => "font-size: 1em;"} %>
         </div>  
       <% end -%>
     <% end -%>    
