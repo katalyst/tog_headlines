@@ -5,7 +5,12 @@ class Member::Headlines::StoriesController < Member::BaseController
   end
   
   def create
-    @story = Story.new(params[:story])
+    attributes = params[:story]
+    @story = Story.new()
+    @story.groups = [Group.find_by_name(attributes[:group])]
+    @story.title = attributes[:title]
+    @story.body = attributes[:body]
+    @story.summary = attributes[:summary]    
     @story.owner = current_user
     @story.publisher = current_user
     @story.editor = current_user
@@ -27,10 +32,9 @@ class Member::Headlines::StoriesController < Member::BaseController
     @story.editor = current_user
 
     attributes = params[:story]
-    groups = attributes[:groups]
-    groups.delete('0')
-    @story.groups = Group.find(groups)
-    attributes.delete(:groups)
+    group = attributes[:group]
+    @story.groups = [Group.find_by_name(group)]
+    attributes.delete(:group)
     @story.attributes = attributes
 
     if @story.save

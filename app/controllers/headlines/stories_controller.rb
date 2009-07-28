@@ -1,7 +1,7 @@
 class Headlines::StoriesController < ApplicationController
   
   def show
-    @story = Story.published.find(params[:id])
+    @story = Story.find(params[:id])
     # SMELL: this isn't very elegant, but users should only see this if they're crafting urls
     raise 'not permitted' unless @story.visible_to(current_user)
   end

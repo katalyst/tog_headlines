@@ -69,14 +69,11 @@ class Story < ActiveRecord::Base
   end
 
   def visible_to(user)
-    if groups.length == 0 or portal == true
+    if portal == true or (user and (groups & user.groups).length > 0)
       return true
     else
-      if user 
-        return (groups & user.groups).length > 0
-      end
+      return false
     end
-    false
   end
 
   private 

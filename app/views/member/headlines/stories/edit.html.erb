@@ -21,21 +21,8 @@
 
          <% unless current_user.groups.empty? %>
          <p>
-           <label for="text"><strong>Groups:</strong><br />
-             <%
-               groups_id = @story.groups.map {|g| g.id }
-               current_user.groups.each {|group| %>
-               <input type="checkbox"
-                      name="story[groups][]"
-                      id="story_group_<%= h group.id %>"
-                      value="<%= h group.id %>"
-              <% if groups_id.include?(group.id) %>
-                      checked = "checked"
-              <% end %>
-              />
-              <label for="story_group_<%= h group.id %>"><%= h group.name %></label>
-              <br />
-            <% } %>
+           <label for="text"><strong>Group:</strong><br/>
+					 <%= select_tag "story[group]", options_for_select(current_user.groups.map{|g| g.name}) %>
          </p>
          <% end %>
 
